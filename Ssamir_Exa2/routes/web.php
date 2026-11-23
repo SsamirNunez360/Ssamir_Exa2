@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\EquipoController;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/login');
@@ -11,7 +12,20 @@ Route::post('/login', [LoginController::class, 'store'])
     ->name('login.store');
 
 Route::middleware('auth')->group(function () {
-    Route::view('/inicio', 'inicio')->name('inicio');
+    Route::get('/inicio', fn () => redirect()->route('equipos.index'))->name('inicio');
 
-    Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
+    Route::get('/equipos', [EquipoController::class, 'index'])->name('equipos.index');
+    Route::get('/equipos/crear', [EquipoController::class, 'create'])->name('equipos.create');
+    Route::post('/equipos', [EquipoController::class, 'store'])->name('equipos.store');
+    Route::get('/equipos/{id}/editar', [EquipoController::class, 'edit'])
+        ->whereNumber('id')
+        ->name('equipos.edit');
+    Route::put('/equipos/{id}', [EquipoController::class, 'update'])
+        ->whereNumber('id')
+        ->name('equipos.update');
+    Route::delete('/equipos/{id}', [EquipoController::class, 'destroy'])
+        ->whereNumber('id')
+        ->name('equipos.destroy');
+
+    Route::post('/logout', [EquipoController::class, 'destroy'])->name('logout');
 });
