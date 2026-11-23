@@ -27,5 +27,5 @@ Route::middleware('auth')->group(function () {
         ->whereNumber('id')
         ->name('equipos.destroy');
 
-    Route::post('/logout', [EquipoController::class, 'destroy'])->name('logout');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });

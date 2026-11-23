@@ -29,7 +29,11 @@
                     <td>{{ ucfirst(str_replace('_', ' ', $equipo->estado)) }}</td>
                     <td>
                         <a href="{{ route('equipos.edit', $equipo->id) }}">Editar</a>
-
+                            <form method="POST" action="{{ route('equipos.destroy', $equipo->id) }}"
+                              style="display:inline"
+                              onsubmit="return confirm('¿Eliminar esta equipo?');">
+                            @csrf
+                            @method('DELETE')
                             <button type="submit">Eliminar</button>
                         </form>
                     </td>
