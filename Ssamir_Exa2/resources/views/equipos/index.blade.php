@@ -4,6 +4,7 @@
 
 @section('contenido')
     <h1>Control de equipos</h1>
+    <p><a class="boton" href="{{ route('equipos.create') }}">Registrar equipo</a></p>
 
     <table>
         <thead>
@@ -28,6 +29,7 @@
                     <td>{{ ucfirst(str_replace('_', ' ', $equipo->estado)) }}</td>
                     <td>
                         <a href="{{ route('equipos.edit', $equipo->id) }}">Editar</a>
+
                             <button type="submit">Eliminar</button>
                         </form>
                     </td>
