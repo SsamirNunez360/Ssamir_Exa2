@@ -13,7 +13,7 @@
                 <th>Código</th>
                 <th>Título</th>
                 <th>Marca</th>
-                <th>Fecha adquisición</th>
+                <th>Fecha adquisición/th>
                 <th>Estado</th>
                 <th>Acciones</th>
             </tr>
